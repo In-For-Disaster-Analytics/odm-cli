@@ -1,13 +1,19 @@
 {
-  "id": "no-interactive-example",
-  "version": "0.1.0",
+  "id": "ODM-CLI",
+  "version": "0.1.0:sha-4d9a75c",
   "description": "Run an non-interactive script on TACC using docker.",
   "owner": "${apiUserId}",
+  "moduleLoads": [
+        {
+            "moduleLoadCommand": "module load",
+            "modulesToLoad": ["tacc-singularity"]
+        }
+    ],
   "enabled": true,
   "runtime": "SINGULARITY",
   "runtimeVersion": null,
   "runtimeOptions": ["SINGULARITY_RUN"],
-  "containerImage": "docker://ghcr.io/in-for-disaster-analytics/cookbook-docker-template:0.1.0",
+  "containerImage": "docker://ghcr.io/in-for-disaster-analytics/odm-cli:sha-4d9a75c",
   "jobType": "BATCH",
   "maxJobs": -1,
   "maxJobsPerUser": -1,
@@ -29,18 +35,7 @@
     "cmdPrefix": "mkdir $PWD/work $PWD/home $PWD/scratch;",
     "parameterSet": {
       "appArgs": [
-        {
-          "name": "Greeting",
-          "description": "Choose a greeting to give to your target",
-          "inputMode": "REQUIRED",
-          "arg": "hello"
-        },
-        {
-          "name": "Target",
-          "description": "Whom to address your greeting",
-          "inputMode": "REQUIRED",
-          "arg": "world"
-        }
+        
       ],
       "containerArgs": [
         {
@@ -80,7 +75,14 @@
         "includeLaunchFiles": true
       }
     },
-    "fileInputs": [],
+    "fileInputs": [{
+        "name": "Image Directory",
+        "description": "Directory for the images",
+        "inputMode": "REQUIRED",
+        "autoMountLocal": true,
+        "sourceUrl": null,
+        "targetPath": "images_dir/"
+      }],
     "fileInputArrays": [],
     "nodeCount": 1,
     "coresPerNode": 1,
@@ -91,13 +93,13 @@
   },
   "tags": ["portalName: ALL"],
   "notes": {
-    "label": "My first cookbook",
-    "helpUrl": "https://github.com/In-For-Disaster-Analytics/Cookbook-Docker-Template",
-    "helpText": "This app is non-interactive and runs a simple script that greets a target with a greeting of your choice",
+    "label": "Open Drone Map - Photogrammetry",
+    "helpUrl": "https://github.com/In-For-Disaster-Analytics/odm-cli",
+    "helpText": "This app for non-interactive run of ODM command line and will generate point clouds and orthophotos. ",
     "hideNodeCountAndCoresPerNode": true,
     "isInteractive": false,
     "icon": "jupyter",
     "category": "Data Processing",
-    "queueFilter": ["development", "normal"]
+    "queueFilter": ["vm-small","development", "normal"]
   }
 }
