@@ -1,6 +1,6 @@
 {
   "id": "ODM-CLI",
-  "version": "0.1.0:sha-4d9a75c",
+  "version": "0.1.0:sha-45af82e",
   "description": "Run an non-interactive script on TACC using docker.",
   "owner": "${apiUserId}",
   "moduleLoads": [
@@ -13,7 +13,7 @@
   "runtime": "SINGULARITY",
   "runtimeVersion": null,
   "runtimeOptions": ["SINGULARITY_RUN"],
-  "containerImage": "docker://ghcr.io/in-for-disaster-analytics/odm-cli:sha-4d9a75c",
+  "containerImage": "docker://ghcr.io/in-for-disaster-analytics/odm-cli:sha-45af82e",
   "jobType": "BATCH",
   "maxJobs": -1,
   "maxJobsPerUser": -1,
