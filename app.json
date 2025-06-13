@@ -6,7 +6,7 @@
   "moduleLoads": [
         {
             "moduleLoadCommand": "module load",
-            "modulesToLoad": ["tacc-singularity"]
+            "modulesToLoad": ["tacc-apptainer"]
         }
     ],
   "enabled": true,
