@@ -1,6 +1,6 @@
 {
-  "id": "ODM-CLI",
-  "version": "0.1.4",
+  "id": "ODM-CLI-S3",
+  "version": "0.1.1-s3",
   "description": "Run an non-interactive script on TACC using docker.",
   "owner": "${apiUserId}",
   "enabled": true,
@@ -16,11 +16,11 @@
     "description": null,
     "dynamicExecSystem": false,
     "execSystemConstraints": null,
-    "execSystemId": "ls6",
+    "execSystemId": "stampede3",
     "execSystemExecDir": "${JobWorkingDir}",
     "execSystemInputDir": "${JobWorkingDir}",
-    "execSystemOutputDir": "${JobWorkingDir}/images_dir",
-    "execSystemLogicalQueue": "development",
+    "execSystemOutputDir": "${JobWorkingDir}/output",
+    "execSystemLogicalQueue": "skx-dev",
     "archiveSystemId": "cloud.data",
     "archiveSystemDir": "HOST_EVAL($HOME)/tapis-jobs-archive/${JobCreateDate}/${JobName}-${JobUUID}",
     "archiveOnAppError": true,
@@ -32,7 +32,7 @@
                 {
                     "name": "Rstudio apptainer runscript",
                     "inputMode": "FIXED",
-                    "arg": "--mesh-octree-depth 12 --ignore-gsd --dtm --smrf-threshold 0.4 --orthophoto-resolution 1  --smrf-window 24 --dsm --pc-csv --pc-las  --rerun-all --orthophoto-kmz --force-gps  --ignore-gsd  --matcher-type flann --feature-quality ultra --max-concurrency 128  --cog --pc-classify   --pc-quality high --rerun-all  --use-hybrid-bundle-adjustment --build-overviews --time --min-num-features 10000   --project-path images_dir/",
+                    "arg": "--orthophoto-png --mesh-octree-depth 12 --ignore-gsd --dtm --smrf-threshold 0.4   --smrf-window 24 --dsm --pc-csv --pc-las  --rerun-all --orthophoto-kmz --force-gps  --ignore-gsd  --matcher-type flann --feature-quality ultra --max-concurrency 128  --cog --pc-classify --sky-removal  --pc-quality high --rerun-all  --use-hybrid-bundle-adjustment --build-overviews --time --min-num-features 10000   --project-path images_dir/",
                     "notes": {
                         "isHidden": true
                     }
@@ -101,6 +101,6 @@
     "isInteractive": false,
     "icon": "jupyter",
     "category": "Data Processing",
-    "queueFilter": ["vm-small","development", "normal"]
+    "queueFilter": ["skx-dev"]
   }
 }
